@@ -18,7 +18,7 @@ public class ChatEventListener {
 
     @EventListener
     public void handleWebSocketEventListener(final  SessionConnectedEvent event){
-
+        System.out.println(event.getMessage());
     }
 
     @EventListener
