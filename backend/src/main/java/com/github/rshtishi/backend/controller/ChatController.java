@@ -1,4 +1,4 @@
-package controller;
+package com.github.rshtishi.backend.controller;
 
 import com.github.rshtishi.backend.model.Message;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -6,8 +6,6 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
-
-import java.util.SimpleTimeZone;
 
 @Controller
 public class ChatController {
