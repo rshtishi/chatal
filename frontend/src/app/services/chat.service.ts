@@ -35,7 +35,7 @@ export class ChatService implements OnDestroy {
     return this.connect().pipe(first(), switchMap(client => {
       return new Observable<any>(observer => {
         const subscription: StompSubscription = client.subscribe(topic, message => {
-          observer.next(handler(message.body));
+          observer.next(handler(message));
         });
         return () => client.unsubscribe(subscription.id);
       });
@@ -61,7 +61,7 @@ export class ChatService implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.connect().pipe<Client>(first()).subscribe(client => client.disconnect(null));
+    this.connect().pipe<Client>(first()).subscribe(client=> client.disconnect(null as any));
   }
 
 }
