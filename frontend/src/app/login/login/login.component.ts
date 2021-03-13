@@ -8,14 +8,21 @@ import {ChatService} from "../../services/chat.service";
 })
 export class LoginComponent implements OnInit, AfterViewInit {
 
+  username:string="";
+
   constructor(private elementRef: ElementRef,
               private chatService: ChatService) { }
 
   ngOnInit(): void {
+    //this.chatService.onMessage("/topic").subscribe(data => console.log(data));
   }
 
   ngAfterViewInit(){
     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = 'black';
+  }
+
+  submit(){
+    //this.chatService.send("/topic",this.username);
   }
 
 }

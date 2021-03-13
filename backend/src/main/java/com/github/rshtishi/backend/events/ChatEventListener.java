@@ -18,7 +18,15 @@ public class ChatEventListener {
 
     @EventListener
     public void handleWebSocketEventListener(final  SessionConnectedEvent event){
+        System.out.println("Hello Connected User");
         System.out.println(event.getMessage());
+        final StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
+        String sessionId = headerAccessor.getSessionId();
+        System.out.println(sessionId);
+        final String username = (String) headerAccessor.getMessageHeaders().get("username");
+        System.out.println(username);
+        //send the event to the broker
+        // store session id = username
     }
 
     @EventListener

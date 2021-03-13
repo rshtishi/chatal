@@ -4,11 +4,11 @@
       <div class="text-center">
         <img id="profile-img" class="rounded-circle profile-img-card" src="https://i.imgur.com/6b6psnA.png" />
         <p id="profile-name" class="profile-name-card"></p>
-        <form  class="form-signin">
+        <form  (submit)="submit()" class="form-signin">
 
 
-          <input type="text" name="name" id="username" class="form-control form-group" placeholder="Name" required autofocus>
-          <button class="btn btn-lg btn-outline-secondary btn-block btn-signin" type="submit">enter</button>
+          <input  [(ngModel)]="username" type="text" name="name" id="username" class="form-control form-group" placeholder="Name" required autofocus>
+          <button  class="btn btn-lg btn-outline-secondary btn-block btn-signin" type="submit">enter</button>
         </form><!-- /form -->
       </div>
     </div>
