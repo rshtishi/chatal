@@ -22,10 +22,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("rando").password("{noop}rando").roles("USER")
+                .withUser("rando").password("{bcrypt}test").roles("USER")
                 .and()
-                .withUser("ema").password("{noop}ema").roles("USER")
+                .withUser("ema").password("{bcrypt}test").roles("USER")
                 .and()
-                .withUser("guest").password("guest").roles("USER");
+                .withUser("guest").password("{bcrypt}test").roles("USER");
     }
 }
