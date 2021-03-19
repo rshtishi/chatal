@@ -1,10 +1,11 @@
 package com.github.rshtishi.backend.security;
 
+import com.github.rshtishi.backend.service.InMemoryUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -22,7 +23,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private JwtProvider jwtProvider;
     @Autowired
-    private InMemoryUserDetailService userDetailService;
+    private UserDetailsService userDetailService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {

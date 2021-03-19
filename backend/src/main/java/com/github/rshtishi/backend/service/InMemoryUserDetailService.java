@@ -1,4 +1,4 @@
-package com.github.rshtishi.backend.security;
+package com.github.rshtishi.backend.service;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;
