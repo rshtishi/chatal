@@ -56,7 +56,7 @@ public class JwtProvider {
         return true;
     }
 
-    public String getUsernameFromJwtToken(String jwtToken){
+    public String getUsernameFromJwtToken(String jwtToken) {
         Claims claims = Jwts.parser().setSigningKey(getPublicKey()).parseClaimsJwt(jwtToken).getBody();
         return claims.getSubject();
     }
@@ -68,8 +68,8 @@ public class JwtProvider {
 
     public String generateToken(String username) {
         return Jwts.builder().setSubject(username)
-                .setIssuedAt(Date.from(Instant.now().plusMillis(jwtExpirationInMillis))).compact();
+                .setIssuedAt(Date.from(Instant.now()))
+                .signWith(getPrivateKey())
+                .setExpiration(Date.from(Instant.now().plusMillis(jwtExpirationInMillis))).compact();
     }
-
-
 }
