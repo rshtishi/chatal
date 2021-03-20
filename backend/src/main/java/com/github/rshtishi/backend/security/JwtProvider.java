@@ -3,6 +3,7 @@ package com.github.rshtishi.backend.security;
 import com.github.rshtishi.backend.exceptions.ChatalException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -21,6 +22,7 @@ import java.util.Date;
 public class JwtProvider {
 
     private KeyStore keyStore;
+    @Getter
     @Value("${jwt.expiration.time}")
     private Long jwtExpirationInMillis;
 
