@@ -30,7 +30,7 @@ public class JwtProvider {
     public void init() {
         try {
             keyStore = KeyStore.getInstance("JKS");
-            InputStream resourceAsStream = getClass().getResourceAsStream("chatal.jks");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/chatal.jks");
             keyStore.load(resourceAsStream, "changeit".toCharArray());
         } catch (KeyStoreException | IOException | NoSuchAlgorithmException | CertificateException e) {
             e.printStackTrace();
