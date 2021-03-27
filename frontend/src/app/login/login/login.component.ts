@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
-import {ChatService} from "../../services/chat.service";
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AuthenticationRequest} from "../../model/chatal.model";
 
 @Component({
   selector: 'app-login',
@@ -8,9 +8,9 @@ import {ChatService} from "../../services/chat.service";
 })
 export class LoginComponent implements OnInit, AfterViewInit {
 
-  username:string="";
+  request:AuthenticationRequest={};
 
-  constructor(private elementRef: ElementRef) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(){
   }
 
-  submit(){
-    console.log(this.username);
+  signIn(){
+    console.log(this.request);
   }
 
 }

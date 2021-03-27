@@ -14,14 +14,26 @@
             <div class="col-lg-10 col-xl-7 mx-auto">
               <h3 class="display-4">Chatal</h3>
               <p class="text-muted mb-4">Welcome back!</p>
-              <form>
+              <form (ngSubmit)="signIn()">
                 <div class="form-group mb-3">
-                  <input id="inputEmail" type="email" placeholder="Email address" required="" autofocus=""
-                         class="form-control rounded-pill border-0 shadow-sm px-4">
+                  <input id="inputEmail" type="text" placeholder="Username" autofocus=""
+                         [(ngModel)]="request.username" name="username" required #username="ngModel"
+                         class="form-control rounded-pill  shadow-sm px-4"
+                         [ngClass]="{'border-danger': username.errors && username.touched}">
+                  <div *ngIf="username.touched && username.invalid"
+                       class="text-center d-flex justify-content-between mt-4 text-danger">
+                    Username is required.
+                  </div>
                 </div>
                 <div class="form-group mb-3">
-                  <input id="inputPassword" type="password" placeholder="Password" required=""
-                         class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                  <input id="inputPassword" type="password" placeholder="Password"
+                         [(ngModel)]="request.password" name="password" required #password="ngModel"
+                         class="form-control rounded-pill shadow-sm px-4 text-primary"
+                         [ngClass]="{'border-danger': password.errors && password.touched}">
+                  <div *ngIf="password.touched && password.invalid"
+                    class="text-center d-flex justify-content-between mt-4 text-danger">
+                    Password is required.
+                  </div>
                 </div>
                 <!--
                 <div class="custom-control custom-checkbox mb-3">
