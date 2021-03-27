@@ -91,7 +91,6 @@
                             <!-- HELP: http://www.habarta.cz/typescript-generator/maven/typescript-generator-maven-plugin/generate-mojo.html -->
                             <jsonLibrary>jackson2</jsonLibrary>
                             <optionalProperties>all</optionalProperties>
-                            <optionalPropertiesDeclaration>questionMarkAndNullableType</optionalPropertiesDeclaration>
                             <mapEnum>asEnum</mapEnum>
                             <stringQuotes>singleQuotes</stringQuotes>
                             <classPatterns>
@@ -101,7 +100,7 @@
                             </classPatterns>
                             <outputKind>module</outputKind>
                             <outputFileType>implementationFile</outputFileType>
-                            <outputFile>target/chatal.model.ts</outputFile>
+                            <outputFile>../frontend/src/app/model/chatal.model.ts</outputFile>
                         </configuration>
                         <executions>
                             <execution>
