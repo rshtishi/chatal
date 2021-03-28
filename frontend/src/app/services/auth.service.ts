@@ -4,6 +4,7 @@ import {AuthenticationRequest, AuthenticationResponse} from "../model/chatal.mod
 import {AppSettings} from "../app.settings";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
+import {LocalStorageService} from "./local-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,14 @@ import {Observable} from "rxjs";
 export class AuthService {
 
 
-  constructor(private _httpClient: HttpClient) {
+  constructor(private _httpClient: HttpClient, private _localStorageSvc: LocalStorageService) {
   }
 
-  authenticate(request: AuthenticationRequest):Observable<boolean> {
+  authenticate(request: AuthenticationRequest): Observable<boolean> {
     return this._httpClient.post<AuthenticationResponse>(AppSettings.AUTH_ENDPOINT, request).pipe(map(response => {
       console.log(response);
       if (response.authenticationToken) {
-        //TO DO
-        // save the response in the local storage
+        this._localStorageSvc.set(AppSettings.AUTH_RESPONSE,response);
         return true;
       }
       return false;

@@ -9,4 +9,6 @@ export class AppSettings {
 
   public static AUTH_ENDPOINT= AppSettings.SERVER_URL+AppSettings.API_ENDPOINT+"/auth/authenticate";
 
+  public static AUTH_RESPONSE ="authentication_response";
+
 }
