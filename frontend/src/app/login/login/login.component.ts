@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AuthenticationRequest} from "../../model/chatal.model";
 import {AuthService} from "../../services/auth.service";
 import {AppSettings} from "../../app.settings";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -10,23 +11,29 @@ import {AppSettings} from "../../app.settings";
 })
 export class LoginComponent implements OnInit, AfterViewInit {
 
-  request:AuthenticationRequest={};
+  request: AuthenticationRequest = {};
 
-  constructor(private _authService: AuthService) { }
+  constructor(private _authService: AuthService,
+              private _router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
   }
 
-  signIn(){
+  signIn() {
     console.log(this.request);
-    this._authService.authenticate(this.request).subscribe( response=> {
-        console.log(response);
-    });
+    this._authService.authenticate(this.request).subscribe(response => {
+        if (response) {
+          this._router.navigate(["/chat-room"])
+        }
+      },
+      error => {
+        console.log("rando",error)
+      });
   }
-
 
 
 }

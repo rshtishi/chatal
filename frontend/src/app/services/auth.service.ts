@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthenticationRequest, AuthenticationResponse} from "../model/chatal.model";
 import {AppSettings} from "../app.settings";
 import {map} from "rxjs/operators";
@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   authenticate(request: AuthenticationRequest): Observable<boolean> {
-    return this._httpClient.post<AuthenticationResponse>(AppSettings.AUTH_ENDPOINT, request).pipe(map(response => {
+    return this._httpClient.post<AuthenticationResponse>(AppSettings.AUTH_ENDPOINT, request ).pipe(map(response => {
       console.log(response);
       if (response.authenticationToken) {
         this._localStorageSvc.set(AppSettings.AUTH_RESPONSE,response);
