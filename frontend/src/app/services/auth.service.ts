@@ -17,7 +17,6 @@ export class AuthService {
 
   authenticate(request: AuthenticationRequest): Observable<boolean> {
     return this._httpClient.post<AuthenticationResponse>(AppSettings.AUTH_ENDPOINT, request ).pipe(map(response => {
-      console.log(response);
       if (response.authenticationToken) {
         this._localStorageSvc.set(AppSettings.AUTH_RESPONSE,response);
         return true;
