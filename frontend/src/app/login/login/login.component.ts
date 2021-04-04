@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         }
       },
       error => {
-        console.log("rando",error)
+        this._router.navigate(["notification", "error"], {state: {errCode: error.status}})
       });
   }
 

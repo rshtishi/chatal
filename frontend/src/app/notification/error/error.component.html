@@ -1,2 +1,11 @@
-<p>error works!</p>
-<p>{{error | json}}</p>
+<div class="page-wrap d-flex flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 text-center">
+        <span class="display-1 d-block">{{error.code +" - " + error.message}}</span>
+        <div class="mb-4 lead">{{error.details}}</div>
+        <a (click)="back()" class="btn btn-link">Back to Home</a>
+      </div>
+    </div>
+  </div>
+</div>
