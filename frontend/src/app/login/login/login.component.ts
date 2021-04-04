@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   signIn() {
-    console.log(this.request);
     this._authService.authenticate(this.request).subscribe(response => {
         if (response) {
           this._router.navigate(["/chat-room"])

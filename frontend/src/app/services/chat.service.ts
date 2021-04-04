@@ -6,6 +6,8 @@ import {environment} from "../../environments/environment";
 import * as SockJS from "sockjs-client";
 import {filter, first, switchMap} from "rxjs/operators";
 import {StompSubscription} from "@stomp/stompjs";
+import {LocalStorageService} from "./local-storage.service";
+import {AppSettings} from "../app.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,11 @@ export class ChatService implements OnDestroy {
   private client: Client;
   private state: BehaviorSubject<SocketState>;
 
-  constructor() {
+  constructor(private _localStorageSvc:LocalStorageService) {
+    let token = this._localStorageSvc.get(AppSettings.AUTH_RESPONSE,{}).authenticationToken;
+    const customHeaders ={
+      "Authorization": `Bearer${token}`
+    };
     this.client = over(<WebSocket>new SockJS(environment.socketURL));
     this.state = new BehaviorSubject<SocketState>(SocketState.ATTEMPTING);
     this.client.connect({}, () => {
