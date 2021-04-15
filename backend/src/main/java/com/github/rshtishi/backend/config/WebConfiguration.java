@@ -16,7 +16,7 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .allowedMethods("*")
                 .maxAge(3600L)
                 .allowedHeaders("*")
-                .exposedHeaders("Authorization")
+                .exposedHeaders("Authorization","X-Auth-Token")
                 .allowCredentials(true);
     }
 }

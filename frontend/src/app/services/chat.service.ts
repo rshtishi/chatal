@@ -20,11 +20,12 @@ export class ChatService implements OnDestroy {
   constructor(private _localStorageSvc:LocalStorageService) {
     let token = this._localStorageSvc.get(AppSettings.AUTH_RESPONSE,{}).authenticationToken;
     const customHeaders ={
-      "Authorization": `Bearer${token}`
+      "Authorization": `${token}`
     };
+    console.log(customHeaders);
     this.client = over(<WebSocket>new SockJS(environment.socketURL));
     this.state = new BehaviorSubject<SocketState>(SocketState.ATTEMPTING);
-    this.client.connect({}, () => {
+    this.client.connect(customHeaders, () => {
       this.state.next(SocketState.CONNECTED);
     });
   }
