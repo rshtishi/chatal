@@ -17,8 +17,9 @@ export class ChatService implements OnDestroy {
 
   constructor() {
     this.client = over(<WebSocket>new SockJS(environment.socketURL));
+    var headers = {login: 'Rando'};
     this.state = new BehaviorSubject<SocketState>(SocketState.ATTEMPTING);
-    this.client.connect({}, () => {
+    this.client.connect(headers, () => {
       this.state.next(SocketState.CONNECTED);
     });
   }
@@ -61,7 +62,7 @@ export class ChatService implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.connect().pipe<Client>(first()).subscribe(client=> client.disconnect(null as any));
+    this.connect().pipe<Client>(first()).subscribe(client => client.disconnect(null as any));
   }
 
 }

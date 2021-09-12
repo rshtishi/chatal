@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
               private chatService: ChatService) { }
 
   ngOnInit(): void {
-    //this.chatService.onMessage("/topic").subscribe(data => console.log(data));
+    this.chatService.onMessage("/topic").subscribe(data => console.log(data));
   }
 
   ngAfterViewInit(){
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   submit(){
-    //this.chatService.send("/topic",this.username);
+    this.chatService.send("/topic",this.username);
   }
 
 }
